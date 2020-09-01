@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定修饰符</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input v-model="name" />{{name}}
+        </div>
+        <div>
+            <!--延迟绑定，(按下回车才绑定)-->
+            <input v-model.lazy="message" />{{message}}
+        </div>
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            name: "",
+            message: "",
+            age: 0
+        },
+
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

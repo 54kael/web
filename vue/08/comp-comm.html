@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父组件传子组件</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--向子组件传递数据-->
+        <son :movies="movies"></son>
+    </div>
+</body>
+
+<template id="son">
+    <div>
+        <h2>子组件</h2>
+        <ul>
+            <li v-for="movie in movies">
+                {{movie}}
+            </li>
+        </ul>
+        <h2>{{message}}</h2>
+    </div>
+</template>
+
+<script>
+    Vue.component('son', {
+        template: '#son',
+
+        // props对象接收父组件的数据
+        props: {
+            movies: Array, // 属性名: 类型限制
+            // 指定类型和默认值
+            message: {
+                type: String, // 指定类型
+                default: 'son default message', // 指定默认值
+                //required: true // 必须传值
+            }
+        },
+
+        data() {
+            return {}
+        }
+    })
+
+    // 通过props向子组件传递数据
+    // 通过事件向父组件传递数据
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            message: "你好",
+            movies: ["火影忍者", "星际穿越", "大话西游", "少年派奇幻漂流", "盗梦空间"],
+        },
+
+        methods: {},
+
+    })
+</script>
+
+</html>

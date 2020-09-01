@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子组件</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <testcomponent1></testcomponent1>
+        <testcomponent2></testcomponent2>
+    </div>
+</body>
+
+<template id="cpn1">
+    <div>
+        <h2>我是组件标题1</h2>
+        <p>我是组件段落1</p>    
+    </div>
+</template>
+<template id="cpn2">
+    <div>
+        <h2>我是组件标题2</h2>
+        {{name}}
+        <p>我是组件段落2</p>    
+    </div>
+</template>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {},
+
+        methods: {},
+
+        components: {
+            testcomponent2: {
+                template: '#cpn2',
+                data() {
+                    return {
+                        name: "aaa"
+                    }
+                }
+            },
+
+
+            testcomponent1: {
+                template: '#cpn1'
+            }
+        }
+    })
+</script>
+
+</html>

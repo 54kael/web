@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>当前计数:{{counter}}</h2>
+        <button @click="counter++">+</button>
+        <button v-on:click="sub">-</button>
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            counter: 0,
+        },
+
+        methods: {
+            sub() {
+                // 使用this来表示调用app对象的data属性里面的counter
+                this.counter--;
+                console.log("执行减法")
+            }
+        }
+    })
+</script>
+
+</html>

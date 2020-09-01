@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听器</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!--无参传递时默认传递事件对象-->
+            <button @click="btn1()">按钮1</button>
+
+            <!--传递数字和事件-->
+            <button @click="btn2(123, $event)">按钮2</button>
+
+            <!--传递变量-->
+            <button @click="btn3(name)">按钮3</button>
+
+            <!--传递字符串-->
+            <button @click="btn4('name')">按钮4</button>
+        </div>
+
+        <div @click="divClick">
+            <span>我是div内容</span>
+
+            <!-- .stop阻止事件冒泡-->
+            <button @click.stop="btnClick">按钮</button>
+        </div>
+
+        <div>
+            <form>
+                <input name="username">
+                <!--阻止默认行为-->
+                <input type="submit" value="提交" @click.prevent="submitBtn">
+            </form>
+        </div>
+
+        <div>
+            <!--监听键盘enter键帽-->
+            <input type="text" v-on:keyup.enter="keyUp">
+        </div>
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            counter: 0,
+            name: "张三"
+        },
+
+        methods: {
+            // 当方法没有接收参数时，默认接收event事件对象
+            btn1(event) {
+                console.log(event); // event对象
+            },
+
+            btn2(value, event) {
+                console.log(value);
+                console.log(event);
+            },
+
+            btn3(value) {
+                console.log(value);
+            },
+
+            btn4(value) {
+                console.log(value);
+            },
+
+            divClick() {
+                console.log("divClick");
+            },
+
+            btnClick(event) {
+                console.log("btnClick");
+            },
+
+            submitBtn() {
+                console.log("提交")
+            },
+
+            keyUp() {
+                console.log("login");
+            }
+        }
+    })
+</script>
+
+</html>

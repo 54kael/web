@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li :class="{movie:currentIndex==index}" @click="selectMovie(index)" v-for="(movie,index) in movies">
+                {{index}}--{{movie}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            movies: ["火影忍者", "星际穿越", "大话西游", "少年派奇幻漂流", "盗梦空间"],
+            currentIndex: 0
+        },
+        methods: {
+            selectMovie(index) {
+                this.currentIndex = index;
+            }
+        }
+    })
+</script>
+
+<style>
+    .movie {
+        color: red;
+    }
+</style>
+
+</html>

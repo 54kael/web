@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级函数</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="filterFun()">过滤函数</button> {{filterNums}}
+        </div>
+
+        <div>
+            <button @click="mapFun()">map函数</button> {{mapNums}}
+        </div>
+
+        <div>
+            <button @click="reduceFun()">reduce函数</button>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            filterNums: [],
+            mapNums: [],
+            reduceNums: []
+        },
+
+        methods: {
+
+            filterFun() {
+                let nums = [10, 100, 45, 342, 56, 22, 556, 545, 12];
+                let newNums = nums.filter((n) => {
+                    return n >= 100
+                })
+                this.filterNums = newNums;
+            },
+
+            mapFun() {
+                let nums = [10, 20, 45, 35, 55];
+                let newNums = nums.map((n) => {
+                    return n * 2;
+                })
+                this.mapNums = newNums;
+            },
+
+            reduceFun() {
+                let nums = [10, 100, 45, 342, 56, 22, 556, 545, 12];
+                // 汇总函数
+                let reduceNums = nums.reduce((preValue, n) => {
+
+                })
+            }
+        }
+    })
+</script>
+
+</html>

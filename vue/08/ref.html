@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父组件访问子组件对象</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!--给组件命名-->
+        <cpn ref="cpnn"></cpn>
+        <button @click="btnClick()">调用子组件方法</button>
+    </div>
+</body>
+
+<template id="cpn">
+    <div style="border: 1px solid yellow">
+        <label>子组件</label>
+        <div>
+            <button @click="getParent()">访问父组件对象</button>
+        </div>
+    </div>
+</template>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            name: "我是父组件"
+        },
+
+        methods: {
+            btnClick() {
+                // 通过名称找到组件并调用方法
+                this.$refs.cpnn.showMessage();
+            }
+        },
+
+        components: {
+            cpn: {
+                template: '#cpn',
+                methods: {
+                    showMessage() {
+                        console.log("啊啊啊");
+                    },
+                    getParent() {
+                        // 调用父组件
+                        console.log(this.$parent);
+                        console.log(this.$parent.name)
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>

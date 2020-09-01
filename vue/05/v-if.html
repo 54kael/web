@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件判断</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if="isShow">
+            <div>数据1</div>
+            <div>数据1</div>
+            <div>数据1</div>
+        </h2>
+    </div>
+</body>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {
+            isShow: true
+        },
+
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

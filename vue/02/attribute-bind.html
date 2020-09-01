@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!--标签内属性绑定-->
+        <div>
+            <img v-bind:src="imgUrl" />
+            <!--:简写-->
+            <a :href="link">Google</a>
+        </div>
+
+
+        <!--类绑定-->
+        <div :class="active">
+            <span>你好啊</span>
+        </div>
+
+
+        <!--
+            绑定类对象
+            v-bind:class="{类名1:布尔值,类名2:布尔值}"
+        -->
+        <div :class="{ class1:class1,class2:class2}">
+            <span>绑定对象类</span>
+        </div>
+
+        <div :class="getClasses()">
+            <span>绑定函数</span>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    // 创建一个vue对象
+    const app = new Vue({
+        // 接管的id
+        el: '#app',
+
+        // 数据区
+        data: {
+            imgUrl: "https://vuejs.org/images/logo.png",
+            link: "https://www.google.com",
+            active: "active",
+            class1: true,
+            class2: false
+        },
+
+        methods: {
+            getClasses() {
+                return {
+                    class1: this.class1,
+                    class2: this.class2
+                }
+            }
+        }
+    })
+</script>
+
+<style>
+    .active {
+        color: red;
+        font-size: 25px;
+    }
+</style>
+
+</html>

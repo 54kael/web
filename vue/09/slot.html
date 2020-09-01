@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插槽</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <cpn>
+                <span>哈哈</span>
+            </cpn>
+            <cpn>
+                <input>
+            </cpn>
+            <cpn>
+                <a href="#">测试</a>
+            </cpn>
+            <cpn></cpn>
+            <cpn></cpn>
+        </div>
+        <hr>
+
+        <div>
+            <!--具名插槽-->
+            <cpn2>
+                <button slot="left">返回</button>
+                <label slot="center">标题</label>
+                <button slot="right">ss右边</button>
+            </cpn2>
+        </div>
+    </div>
+</body>
+
+<template id="cpn">
+    <div>
+        <slot>
+            <button>默认值</button>
+        </slot>
+    </div>
+</template>
+
+<template id="cpn2">
+    <div>
+        <slot name="left">
+            <span>左边</span>
+        </slot>
+        <slot name="center">
+            <span>中间</span>
+        </slot>
+        <slot name="right">
+            <span>右边</span>
+        </slot>
+    </div>
+</template>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+
+        data: {},
+
+        methods: {},
+
+        components: {
+            cpn: {
+                template: '#cpn'
+            },
+            cpn2: {
+                template: '#cpn2'
+            }
+        }
+    })
+</script>
+
+</html>
